@@ -34,7 +34,6 @@ export default class GodsList extends Component {
 
   retrieveGods() {
     GodDataService.findAll().then(response => {
-      console.log(response)
       this.setState({
         gods: response.data
       });
@@ -42,11 +41,11 @@ export default class GodsList extends Component {
   }
 
   refreshList() {
-    this.retrieveGods();
     this.setState({
       currentGod: null,
       currentIndex: -1
     });
+    this.retrieveGods();
   }
 
   setActiveGod(god, index) {
@@ -84,7 +83,7 @@ export default class GodsList extends Component {
   }
 
   render() {
-    const { searchName, gods, currentGod, currentIndex } = this.state;
+    const { gods, currentGod, currentIndex, searchName} = this.state;
 
     return (
       <div className="list row">
@@ -119,7 +118,7 @@ export default class GodsList extends Component {
                   }
                   onClick={() => this.setActiveGod(god, index)}
                   key={index} >
-                  {god.name} + {god.greek} + {god.id}
+                  {god.name}
                 </li>
               ))}
           </ul>
@@ -152,9 +151,8 @@ export default class GodsList extends Component {
                 <label>
                   <strong>Greek:</strong>
                 </label>{" "}
-                {currentGod.greek}
+                {currentGod.greek.toString()}
               </div>
-
               <Link
                 to={"/gods/" +  currentGod.id}
                 className="badge badge-warning">

@@ -19,7 +19,7 @@ export default class God extends Component {
         id: null,
         name: "",
         power: "",
-        greek: null
+        greek: false
       },
       message: ""
     };
@@ -169,7 +169,7 @@ export default class God extends Component {
 
               <div className="form-group">
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Greek:</strong>
                 </label>
                 {currentGod.greek ? "Greek" : "Not Greek"}
               </div>
